@@ -6,7 +6,6 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.api.parkingcontrol.models.ParkingSpotModel;
@@ -45,6 +44,11 @@ public class ParkingSpotService {
 
 	public Optional<ParkingSpotModel> findById(UUID id) {
 		return parkingSpotRepository.findById(id);
+	}
+
+	@Transactional
+	public void delete(ParkingSpotModel parkingSpotModel) {
+		parkingSpotRepository.delete(parkingSpotModel);
 	}
 	
 }
